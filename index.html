@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Final Show</title>
+    <style>
+        body {
+            background-color: black;
+            color: gold;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px gold, 0 0 40px gold;
+            position: relative;
+        }
+        #countdown {
+            font-size: 2rem;
+        }
+        .spotlight {
+            position: absolute;
+            width: 200px;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,215,0,0.3) 10%, rgba(0,0,0,0) 70%);
+            top: 0;
+            animation: moveSpotlight 3s infinite alternate ease-in-out;
+        }
+        .spotlight.left {
+            left: -200px;
+            animation-delay: 0s;
+        }
+        .spotlight.right {
+            right: -200px;
+            animation-delay: 1.5s;
+        }
+        @keyframes moveSpotlight {
+            from { transform: translateX(0); }
+            to { transform: translateX(250px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="spotlight left"></div>
+    <div class="spotlight right"></div>
+    <h1>The Final Show</h1>
+    <div id="countdown"></div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("August 1, 2025 13:00:00").getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                document.getElementById("countdown").innerHTML = `${days} dage ${hours} timer ${minutes} minutter ${seconds} sekunder`;
+            } else {
+                document.getElementById("countdown").innerHTML = "Er I klar?!";
+            }
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
