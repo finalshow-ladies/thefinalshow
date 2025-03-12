@@ -24,35 +24,48 @@
             margin-bottom: 20px;
             text-shadow: 0 0 20px gold, 0 0 40px gold;
             position: relative;
+            z-index: 1;
+        }
+        h2 {
+            font-size: 9rem;
+            font-family: "Brush Script MT", cursive;
+            text-shadow: 0 0 30px gold, 0 0 60px gold;
+            position: relative;
+            z-index: 1;
         }
         #countdown {
             font-size: 2rem;
+            position: relative;
+            z-index: 1;
         }
         .spotlight {
             position: absolute;
-            width: 200px;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,215,0,0.3) 10%, rgba(0,0,0,0) 70%);
-            top: 0;
-            animation: moveSpotlight 3s infinite alternate ease-in-out;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(255,255,200,0.8) 0%, rgba(0,0,0,0) 70%);
+            top: 10%;
+            mix-blend-mode: screen;
+            border-radius: 50%;
+            animation: moveSpotlights 6s infinite alternate ease-in-out;
         }
         .spotlight.left {
-            left: -200px;
+            left: 10%;
             animation-delay: 0s;
         }
         .spotlight.right {
-            right: -200px;
-            animation-delay: 1.5s;
+            right: 10%;
+            animation-delay: 3s;
         }
-        @keyframes moveSpotlight {
-            from { transform: translateX(0); }
-            to { transform: translateX(250px); }
+        @keyframes moveSpotlights {
+            0% { transform: translateY(-10%) translateX(-5%); }
+            100% { transform: translateY(10%) translateX(5%); }
         }
     </style>
 </head>
 <body>
     <div class="spotlight left"></div>
     <div class="spotlight right"></div>
+    <h2>Øsby Ladies</h2>
     <h1>The Final Show</h1>
     <div id="countdown"></div>
 
@@ -67,9 +80,15 @@
                 const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-                document.getElementById("countdown").innerHTML = `${days} dage ${hours} timer ${minutes} minutter ${seconds} sekunder`;
+                
+                const dayText = days === 1 ? "dag" : "dage";
+                const hourText = hours === 1 ? "time" : "timer";
+                const minuteText = minutes === 1 ? "minut" : "minutter";
+                const secondText = seconds === 1 ? "sekund" : "sekunder";
+                
+                document.getElementById("countdown").innerHTML = `${days} ${dayText} ${hours} ${hourText} ${minutes} ${minuteText} ${seconds} ${secondText}`;
             } else {
-                document.getElementById("countdown").innerHTML = "Er I klar?!";
+                document.getElementById("countdown").innerHTML = "Er I klar til The Final Show, ladies?";
             }
         }
         
