@@ -18,47 +18,59 @@
             margin: 0;
             position: relative;
             overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
         }
         h1 {
-            font-size: 4rem;
+            font-size: clamp(2rem, 5vw, 4rem);
             margin-bottom: 20px;
             text-shadow: 0 0 20px gold, 0 0 40px gold;
             position: relative;
             z-index: 1;
         }
         h2 {
-            font-size: 9rem;
+            font-size: clamp(3rem, 10vw, 9rem);
             font-family: "Brush Script MT", cursive;
             text-shadow: 0 0 30px gold, 0 0 60px gold;
             position: relative;
             z-index: 1;
         }
         #countdown {
-            font-size: 2rem;
+            font-size: clamp(1rem, 4vw, 2rem);
             position: relative;
             z-index: 1;
         }
         .spotlight {
             position: absolute;
-            width: 40vw;
-            height: 40vw;
+            width: 35vw;
+            height: 35vw;
             background: radial-gradient(circle, rgba(255,255,200,0.8) 0%, rgba(0,0,0,0) 70%);
-            top: 10%;
+            top: 15%;
             mix-blend-mode: screen;
             border-radius: 50%;
             animation: moveSpotlights 6s infinite alternate ease-in-out;
         }
         .spotlight.left {
-            left: 10%;
+            left: 5%;
             animation-delay: 0s;
         }
         .spotlight.right {
-            right: 10%;
+            right: 5%;
             animation-delay: 3s;
         }
         @keyframes moveSpotlights {
             0% { transform: translateY(-10%) translateX(-5%); }
             100% { transform: translateY(10%) translateX(5%); }
+        }
+
+        @media (max-width: 768px) {
+            .spotlight {
+                width: 50vw;
+                height: 50vw;
+                top: 5%;
+            }
+            .spotlight.left { left: 2%; }
+            .spotlight.right { right: 2%; }
         }
     </style>
 </head>
