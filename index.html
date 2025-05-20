@@ -50,6 +50,45 @@
       z-index: 2;
     }
 
+    /* Scroll-indikatorens container */
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;               /* afstand til bunden af hero */
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg); /* centrer, lav pil med rotation */
+  width: 20px;
+  height: 20px;
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+  opacity: 0.75;
+  animation: bounce 2s infinite;
+  z-index: 2;
+}
+
+/* Bouncing animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+  40% {
+    transform: translate(-50%, 10px) rotate(45deg);
+  }
+  60% {
+    transform: translate(-50%, 5px) rotate(45deg);
+  }
+}
+
+/* Ved mindre skærm kan vi skalere pilen lidt ned: */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    width: 15px;
+    height: 15px;
+    bottom: 15px;
+    border-width: 2px;
+  }
+}
+
+
     /* Spotlights */
     .spotlight {
       position: absolute;
@@ -124,6 +163,8 @@
     <h2>Øsby Ladies</h2>
     <h1>The Final Show</h1>
     <div id="countdown"></div>
+      <!-- SCROLL-INDIKATOR -->
+  <div class="scroll-indicator"></div>
   </header>
 
   <!-- REVEAL -->
