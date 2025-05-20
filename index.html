@@ -89,7 +89,7 @@
     .reveal {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 2.5s ease-out, transform 2.5s ease-out;
+      transition: opacity 3.2s ease-out, transform 3.2s ease-out;
       margin: 100px 0;
     }
     .reveal img {
@@ -105,8 +105,9 @@
     }
     .year {
       font-size: 3rem;
-      margin-bottom: 1rem;
       color: white;
+  font-size: clamp(3rem, 8vw, 6rem);  /* min 3rem, vokser med viewport, max 6rem */
+  margin-bottom: clamp(1.5rem, 5vw, 4rem);
     }
   </style>
 </head>
