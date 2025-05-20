@@ -1,150 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Final Show</title>
-    <style>
-        body {
-            background-color: black;
-            color: gold;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-            overflow-y: auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        h1 {
-            font-size: clamp(2rem, 5vw, 4rem);
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px gold, 0 0 40px gold;
-            position: relative;
-            z-index: 2;
-        }
-        h2 {
-            font-size: clamp(3rem, 10vw, 13rem);
-            font-family: "Brush Script MT", cursive;
-            text-shadow: 0 0 30px gold, 0 0 60px gold;
-            position: relative;
-            z-index: 2;
-        }
-        #countdown {
-            font-size: clamp(1rem, 4vw, 2rem);
-            position: relative;
-            z-index: 2;
-        }
-        .spotlight {
-            position: absolute;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(255,255,200,0.5) 0%, rgba(0,0,0,0) 70%);
-            top: 10%;
-            mix-blend-mode: screen;
-            border-radius: 50%;
-            animation: moveSpotlights 6s infinite alternate ease-in-out;
-        }
-        .spotlight.left {
-            left: 15%;
-            animation-delay: 0s;
-        }
-        .spotlight.right {
-            right: 15%;
-            animation-delay: 3s;
-        }
-        @keyframes moveSpotlights {
-            0% { transform: translateY(-5%) translateX(-5%); }
-            100% { transform: translateY(5%) translateX(5%); }
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Final Show</title>
+  <style>
+    /* Generel styling */
+    body {
+      background-color: black;
+      color: gold;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
 
-        @media (max-width: 768px) {
-            body {
-                height: auto;
-            }
-            .spotlight {
-                width: 60vw;
-                height: 60vw;
-                top: 0;
-            }
-            .spotlight.left { left: 5%; }
-            .spotlight.right { right: 5%; }
-        }
-        .reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* HERO-sektionen */
+    .hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hero h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin: 0 0 20px;
+      text-shadow: 0 0 20px gold, 0 0 40px gold;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 13rem);
+      font-family: "Brush Script MT", cursive;
+      margin: 0 0 10px;
+      text-shadow: 0 0 30px gold, 0 0 60px gold;
+      z-index: 2;
+    }
+    #countdown {
+      font-size: clamp(1rem, 4vw, 2rem);
+      z-index: 2;
+    }
 
-.year {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-    </style>
+    /* Spotlights */
+    .spotlight {
+      position: absolute;
+      width: 40vw;
+      height: 40vw;
+      background: radial-gradient(circle, rgba(255,255,200,0.5) 0%, rgba(0,0,0,0) 70%);
+      top: 10%;
+      mix-blend-mode: screen;
+      border-radius: 50%;
+      animation: moveSpotlights 6s infinite alternate ease-in-out;
+    }
+    .spotlight.left {
+      left: 15%;
+      animation-delay: 0s;
+    }
+    .spotlight.right {
+      right: 15%;
+      animation-delay: 3s;
+    }
+    @keyframes moveSpotlights {
+      0%   { transform: translate(-5%, -5%); }
+      100% { transform: translate(5%, 5%); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .spotlight {
+        width: 60vw;
+        height: 60vw;
+        top: 0;
+      }
+      .spotlight.left { left: 5%; }
+      .spotlight.right { right: 5%; }
+    }
+
+    /* REVEAL-sektionen */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      margin: 100px 0;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .year {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- HERO -->
+  <header class="hero">
     <div class="spotlight left"></div>
     <div class="spotlight right"></div>
     <h2>Øsby Ladies</h2>
     <h1>The Final Show</h1>
     <div id="countdown"></div>
-<section class="reveal">
-  <h2 class="year">Sæson 2021/2022</h2>
-  <img src="images/2022.jpeg" alt="Sæson 2021/2022" />
-</section>
-    <script>
-        function updateCountdown() {
-            const targetDate = new Date("September 10, 2025 18:30:00").getTime();
-            const now = new Date().getTime();
-            const difference = targetDate - now;
+  </header>
 
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-                
-                const dayText = days === 1 ? "dag" : "dage";
-                const hourText = hours === 1 ? "time" : "timer";
-                const minuteText = minutes === 1 ? "minut" : "minutter";
-                const secondText = seconds === 1 ? "sekund" : "sekunder";
-                
-                document.getElementById("countdown").innerHTML = `${days} ${dayText} ${hours} ${hourText} ${minutes} ${minuteText} ${seconds} ${secondText}`;
-            } else {
-                document.getElementById("countdown").innerHTML = "Er I klar til The Final Show, ladies?";
-            }
-        }
-        
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
-    <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const observerOptions = {
-      threshold: 0.1
-    };
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
+  <!-- REVEAL -->
+  <section class="reveal">
+    <h2 class="year">Sæson 2021/2022</h2>
+    <img src="images/2022.jpeg" alt="Sæson 2021/2022" />
+  </section>
 
-    reveals.forEach(el => observer.observe(el));
-  });
-</script>
+  <!-- COUNTDOWN SCRIPT -->
+  <script>
+    function updateCountdown() {
+      const targetDate = new Date("September 10, 2025 18:30:00").getTime();
+      const now = Date.now();
+      const diff = targetDate - now;
+      if (diff > 0) {
+        const days    = Math.floor(diff / (1000*60*60*24));
+        const hours   = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        const minutes = Math.floor((diff % (1000*60*60))   / (1000*60));
+        const seconds = Math.floor((diff % (1000*60))      / 1000);
+        document.getElementById("countdown").textContent =
+          `${days} dage ${hours} timer ${minutes} minutter ${seconds} sekunder`;
+      } else {
+        document.getElementById("countdown").textContent =
+          "Er I klar til The Final Show, ladies?";
+      }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+  <!-- REVEAL SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reveals = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      reveals.forEach(el => obs.observe(el));
+    });
+  </script>
+
 </body>
 </html>
